@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Guess Game</title>
+</head>
+
+<body>
+    <h1>Guess Game</h1>
+    <div class="game">
+        <div id="message">Type your answer!</div>
+        <input type="number" id="yourNumber">
+        <button id="btn" onclick="myFunction()">Guess</button>
+        <h4 >Past result: </h4>
+        <h4 id="pastResult"></h4>
+    </div>
+
+    <script>
+        var min = 1;
+        var max = 20;
+        let randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+        console.log(randomNum);
+        var pastResult = '';
+
+        function myFunction() {
+            var yourInput = document.getElementById("yourNumber").value;
+            if (yourInput == randomNum) {
+                document.getElementById("message").innerHTML = "Congrats! You guessed correctly!";
+                document.getElementById("message").style.color = "greenyellow";
+            }
+            else if (yourInput < randomNum) {
+                document.getElementById("message").innerHTML = "Sorry, your guess is too low!";
+                document.getElementById("message").style.color = "yellow";
+            }
+            else {
+                document.getElementById("message").innerHTML = "Sorry, your guess is too high!"
+                document.getElementById("message").style.color = "yellow";
+            };
+            pastResult = yourInput +';' + pastResult ;
+            document.getElementById("pastResult").innerHTML = pastResult;
+        };
+
+    </script>
+</body>
+
+</html>
